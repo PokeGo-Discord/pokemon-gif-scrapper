@@ -1,5 +1,6 @@
 .spyproject/
 .Utils/__pycache__/
+Result
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

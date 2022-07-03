@@ -6,6 +6,7 @@ FILE: utils.py
 """
 
 import requests
+import urllib.request
 from bs4 import BeautifulSoup
 
 # Retrieve All Pokemon Names By Generation Id
@@ -18,5 +19,24 @@ def getPokemonNames(gen_id):
         pokemonNames.append(i['name'])
     return pokemonNames
 
+def getPokemonGifUrl(pokemonName):
+    url = "https://projectpokemon.org/images/normal-sprite/" + pokemonName + ".gif"
+    return url
+
+def getPokemonShinyGifUrl(pokemonName):
+    url = "https://projectpokemon.org/images/shiny-sprite/" + pokemonName + ".gif"
+    return url
+
+def testUrl(url):
+    page = requests.get(url)
+    if(page.status_code==200):
+        return True
+    else:
+        return False
+
+def saveGif(folderPath, url):
+    urllib.request.urlretrieve(url, folderPath)
+
+    
 
 
