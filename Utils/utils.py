@@ -33,6 +33,24 @@ def testUrl(url):
         return True
     else:
         return False
+    
+def countAllPokemonFromPokeApi():
+    id = 1
+    counter = 0
+    for i in range(8):
+        url = "https://pokeapi.co/api/v2/generation/" + str(id) + "/"
+        r = requests.get(url)
+        data = r.json()
+        counter = counter + len(data['pokemon_species'])
+    return counter
+
+def countAllPokemonFromPokeApiByGen(gen_id):
+    counter = 0
+    url = "https://pokeapi.co/api/v2/generation/" + str(gen_id) + "/"
+    r = requests.get(url)
+    data = r.json()
+    counter = len(data['pokemon_species'])
+    return counter
 
 def saveGif(folderPath, url):
     urllib.request.urlretrieve(url, folderPath)
